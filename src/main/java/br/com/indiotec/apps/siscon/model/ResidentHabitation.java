@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
@@ -23,4 +24,8 @@ public class ResidentHabitation extends AbstractEntity {
 
     @ManyToOne
     private Habitation habitation;
+
+    private boolean owner;
+
+    private LocalDateTime createdAt;
 }
