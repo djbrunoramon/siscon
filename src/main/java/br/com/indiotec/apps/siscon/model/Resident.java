@@ -1,10 +1,5 @@
 package br.com.indiotec.apps.siscon.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,10 +9,6 @@ import java.util.List;
 
 @Entity
 @Table
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Resident extends AbstractEntity {
 
     @Column(name = "first_name", nullable = false)
@@ -34,4 +25,44 @@ public class Resident extends AbstractEntity {
 
     @OneToMany(mappedBy = "resident")
     private List<ResidentHabitation> residentHabitations;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public List<ResidentHabitation> getResidentHabitations() {
+        return residentHabitations;
+    }
+
+    public void setResidentHabitations(List<ResidentHabitation> residentHabitations) {
+        this.residentHabitations = residentHabitations;
+    }
 }
