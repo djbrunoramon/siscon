@@ -1,6 +1,7 @@
 package br.com.indiotec.apps.siscon.controllers;
 
 import br.com.indiotec.apps.siscon.dtos.HabitationDto;
+import br.com.indiotec.apps.siscon.dtos.views.HabitationView;
 import br.com.indiotec.apps.siscon.services.HabitationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,14 +24,14 @@ public class HabitationController {
     private HabitationService habitationService;
 
     @GetMapping
-    public ResponseEntity<List<HabitationDto>> getAllHabitations(Pageable pageable) {
-        Page<HabitationDto> habitationDtoPage = habitationService.findAll(pageable);
-        return ResponseEntity.ok(habitationDtoPage.getContent());
+    public ResponseEntity<List<HabitationView>> getAllHabitations(Pageable pageable) {
+        Page<HabitationView> habitationViews = habitationService.findAll(pageable);
+        return ResponseEntity.ok(habitationViews.getContent());
     }
 
     @PostMapping
-    public ResponseEntity<HabitationDto> saveHabitation(@RequestBody HabitationDto habitationDto) {
-        HabitationDto habitationSaved = habitationService.save(habitationDto);
+    public ResponseEntity<HabitationView> saveHabitation(@RequestBody HabitationDto habitationDto) {
+        HabitationView habitationSaved = habitationService.save(habitationDto);
         return new ResponseEntity<>(habitationSaved, HttpStatus.CREATED);
     }
 }
