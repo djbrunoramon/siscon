@@ -3,6 +3,7 @@ package br.com.indiotec.apps.siscon.services;
 import br.com.indiotec.apps.siscon.dtos.HabitationDto;
 import br.com.indiotec.apps.siscon.dtos.mapper.HabitationMapper;
 import br.com.indiotec.apps.siscon.dtos.views.HabitationView;
+import br.com.indiotec.apps.siscon.exception.IdNotFoundException;
 import br.com.indiotec.apps.siscon.model.Habitation;
 import br.com.indiotec.apps.siscon.repository.HabitationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,13 @@ public class HabitationService {
 
     public HabitationView save(HabitationDto habitationDto) {
         Habitation habitation = habitationMapper.habitationDtoToHabitation(habitationDto);
+        return habitationMapper.habitationToHabitationView(habitationRepository.save(habitation));
+    }
+
+    public HabitationView update(Long id, HabitationDto habitationDto) {
+        Habitation habitation = habitationRepository.findById(id)
+                .orElseThrow(IdNotFoundException::new);
+        habitationMapper.updateHabitationFromHabitationDto(habitationDto, habitation);
         return habitationMapper.habitationToHabitationView(habitationRepository.save(habitation));
     }
 
