@@ -1,6 +1,9 @@
 package br.com.indiotec.apps.siscon.model;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,6 +21,8 @@ public class ResidentHabitation extends AbstractEntity {
 
     private boolean owner;
 
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     public Resident getResident() {
