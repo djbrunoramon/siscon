@@ -3,6 +3,7 @@ package br.com.indiotec.apps.siscon.services;
 import br.com.indiotec.apps.siscon.dtos.ResidentDto;
 import br.com.indiotec.apps.siscon.dtos.mapper.ResidentMapper;
 import br.com.indiotec.apps.siscon.dtos.views.ResidentView;
+import br.com.indiotec.apps.siscon.exception.IdNotFoundException;
 import br.com.indiotec.apps.siscon.model.Resident;
 import br.com.indiotec.apps.siscon.repository.ResidentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,12 @@ public class ResidentService {
     public Page<ResidentView> findAll(Pageable pageable) {
         return residentRepository.findAll(pageable)
                 .map(found -> residentMapper.residentToResidentView(found));
+    }
+
+    public ResidentView update(Long id, ResidentDto residentDto) {
+        Resident resident = residentRepository.findById(id)
+                .orElseThrow(IdNotFoundException::new);
+        residentMapper.updateResidentFromResidentDto(residentDto, resident);
+        return residentMapper.residentToResidentView(residentRepository.save(resident));
     }
 }

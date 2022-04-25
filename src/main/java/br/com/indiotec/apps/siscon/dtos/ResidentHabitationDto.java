@@ -1,11 +1,15 @@
 package br.com.indiotec.apps.siscon.dtos;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class ResidentHabitationDto implements Serializable {
+    @NotNull
     private final Long residentId;
+    @NotNull
     private final Long habitationId;
+    @NotNull
     private final boolean owner;
 
     public ResidentHabitationDto(Long residentId, Long habitationId, boolean owner) {

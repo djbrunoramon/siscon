@@ -1,13 +1,19 @@
 package br.com.indiotec.apps.siscon.dtos;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class ResidentDto implements Serializable {
+    @NotBlank
     private final String firstName;
+    @NotBlank
     private final String lastName;
+    @NotNull
     private final LocalDate birthDate;
+    @NotBlank
     private final String contact;
 
     public ResidentDto(String firstName, String lastName, LocalDate birthDate, String contact) {

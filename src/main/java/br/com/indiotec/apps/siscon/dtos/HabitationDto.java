@@ -1,12 +1,15 @@
 package br.com.indiotec.apps.siscon.dtos;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class HabitationDto implements Serializable {
     private final String block;
     private final String floor;
+    @NotBlank
     private final String number;
+    @NotBlank
     private final String type;
 
     public HabitationDto(String block, String floor, String number, String type) {

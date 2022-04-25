@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -39,7 +40,7 @@ public class HabitationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<HabitationView> updateHabitation(@PathVariable Long id,
-                                                           @RequestBody HabitationDto habitationDto) {
+                                                           @Valid @RequestBody HabitationDto habitationDto) {
         HabitationView habitationSaved = habitationService.update(id, habitationDto);
         return new ResponseEntity<>(habitationSaved, HttpStatus.OK);
     }
