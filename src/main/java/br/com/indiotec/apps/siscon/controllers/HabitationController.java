@@ -32,6 +32,12 @@ public class HabitationController {
         return ResponseEntity.ok(habitationViews.getContent());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<HabitationView> getAllHabitations(@PathVariable Long id) {
+        HabitationView habitationViews = habitationService.findById(id);
+        return ResponseEntity.ok(habitationViews);
+    }
+
     @PostMapping
     public ResponseEntity<HabitationView> saveHabitation(@RequestBody HabitationDto habitationDto) {
         HabitationView habitationSaved = habitationService.save(habitationDto);

@@ -19,6 +19,8 @@ public class GeneralExceptionHandler {
         errorException.setCode(HttpStatus.BAD_REQUEST.value());
         errorException.setDateTime(LocalDateTime.now());
         errorException.setMessage(exception.getMessage());
+        errorException.setThrowable(exception.getCause());
+
         return ResponseEntity.badRequest().body(errorException);
     }
 }

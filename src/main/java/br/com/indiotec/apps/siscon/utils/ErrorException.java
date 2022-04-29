@@ -8,13 +8,16 @@ public class ErrorException {
     private Integer code;
     private LocalDateTime dateTime;
 
+    private Throwable throwable;
+
     public ErrorException() {
     }
 
-    public ErrorException(String message, Integer code, LocalDateTime dateTime) {
+    public ErrorException(String message, Integer code, LocalDateTime dateTime, Throwable throwable) {
         this.message = message;
         this.code = code;
         this.dateTime = dateTime;
+        this.throwable = throwable;
     }
 
     public String getMessage() {
@@ -39,5 +42,13 @@ public class ErrorException {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 }

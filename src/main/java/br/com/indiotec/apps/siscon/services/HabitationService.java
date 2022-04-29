@@ -39,4 +39,11 @@ public class HabitationService {
         return habitationRepository.findAll(pageable)
                 .map(found -> habitationMapper.habitationToHabitationView(found));
     }
+
+    @Transactional(readOnly = true)
+    public HabitationView findById(Long id) {
+        Habitation habitation = habitationRepository.findById(id).orElseThrow(IdNotFoundException::new);
+
+        return habitationMapper.habitationToHabitationView(habitation);
+    }
 }
