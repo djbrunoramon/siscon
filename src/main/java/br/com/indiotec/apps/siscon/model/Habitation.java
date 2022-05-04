@@ -25,6 +25,16 @@ public class Habitation extends AbstractEntity {
     @OneToMany(mappedBy = "habitation")
     private List<ResidentHabitation> residentHabitations;
 
+    public Habitation() {
+    }
+
+    public Habitation(String block, String floor, String number, String type) {
+        this.block = block;
+        this.floor = floor;
+        this.number = number;
+        this.type = type;
+    }
+
     public String getBlock() {
         return block;
     }

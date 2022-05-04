@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class HabitationView implements Serializable {
-    private final Long id;
-    private final String block;
-    private final String floor;
-    private final String number;
-    private final String type;
+    private Long id;
+    private String block;
+    private String floor;
+    private String number;
+    private String type;
+
 
     public HabitationView(Long id, String block, String floor, String number, String type) {
         this.id = id;

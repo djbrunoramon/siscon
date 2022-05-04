@@ -33,7 +33,7 @@ public class HabitationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<HabitationView> getAllHabitations(@PathVariable Long id) {
+    public ResponseEntity<HabitationView> getHabitationById(@PathVariable Long id) {
         HabitationView habitationViews = habitationService.findById(id);
         return ResponseEntity.ok(habitationViews);
     }
